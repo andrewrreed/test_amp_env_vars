@@ -30,7 +30,7 @@ tasks:
   - type: create_job
     name: Script2
     entity_label: script2
-    script: script1.py
+    script: script2.py
     arguments: None
     short_summary: job for script2
     kernel: python3
