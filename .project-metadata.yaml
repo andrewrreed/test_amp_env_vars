@@ -12,6 +12,7 @@ environment_variables:
     description: >-
       Testing script
 
+tasks:
   - type: create_job
     name: Script1
     entity_label: script1
