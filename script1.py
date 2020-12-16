@@ -16,22 +16,27 @@ PROJECT_NAME = os.getenv("CDSW_PROJECT")
 # Instantiate API Wrapper
 cml = CMLBootstrap(HOST, USERNAME, API_KEY, PROJECT_NAME)
 
-# # Set the STORAGE environment variable
-# try : 
-#   storage=os.environ["STORAGE"]
-# except:
-#   if os.path.exists("/etc/hadoop/conf/hive-site.xml"):
-#     tree = ET.parse('/etc/hadoop/conf/hive-site.xml')
-#     root = tree.getroot()
-#     for prop in root.findall('property'):
-#       if prop.find('name').text == "hive.metastore.warehouse.dir":
-#         storage = prop.find('value').text.split("/")[0] + "//" + prop.find('value').text.split("/")[2]
-#   else:
-#     storage = "/user/" + os.getenv("HADOOP_USER_NAME")
+# Set the STORAGE environment variable
+try : 
+  storage=os.environ["STORAGE"]
+  print('MADE IT TO - A')
+except:
+  if os.path.exists("/etc/hadoop/conf/hive-site.xml"):
+    print('MADE IT TO - B')
+    tree = ET.parse('/etc/hadoop/conf/hive-site.xml')
+    root = tree.getroot()
+    for prop in root.findall('property'):
+      if prop.find('name').text == "hive.metastore.warehouse.dir":
+        storage = prop.find('value').text.split("/")[0] + "//" + prop.find('value').text.split("/")[2]
+  else:
+      print('MADE IT TO - C')
+    storage = "/user/" + os.getenv("HADOOP_USER_NAME")
+
 #   storage_environment_params = {"STORAGE":storage}
+#   print("DATA_LOCATION A:", os.environ['DATA_LOCATION'])
 #   storage_environment = cml.create_environment_variable(storage_environment_params)
 #   os.environ["STORAGE"] = storage
 
 
-print("DATA_LOCATION:", os.environ['DATA_LOCATION'])
+print("DATA_LOCATION B:", os.environ['DATA_LOCATION'])
 # print("STORAGE", os.environ["STORAGE"])
