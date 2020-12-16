@@ -13,8 +13,8 @@ USERNAME = os.getenv("CDSW_PROJECT_URL").split(
 API_KEY = os.getenv("CDSW_API_KEY") 
 PROJECT_NAME = os.getenv("CDSW_PROJECT")  
 
-# Instantiate API Wrapper
-cml = CMLBootstrap(HOST, USERNAME, API_KEY, PROJECT_NAME)
+# # Instantiate API Wrapper
+# cml = CMLBootstrap(HOST, USERNAME, API_KEY, PROJECT_NAME)
 
 # # Set the STORAGE environment variable
 # try : 
@@ -34,4 +34,4 @@ cml = CMLBootstrap(HOST, USERNAME, API_KEY, PROJECT_NAME)
 
 
 print("DATA_LOCATION:", os.environ['DATA_LOCATION'])
-print("STORAGE", os.environ["STORAGE"])
+# print("STORAGE", os.environ["STORAGE"])
