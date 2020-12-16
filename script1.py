@@ -1,8 +1,6 @@
-
-!pip3 install -r requirements.txt
+!pip3 install git+https://github.com/fastforwardlabs/cmlbootstrap#egg=cmlbootstrap
 
 import os
-import xml.etree.ElementTree as ET
 from cmlbootstrap import CMLBootstrap
 
 # Set the setup variables needed by CMLBootstrap
@@ -16,27 +14,19 @@ PROJECT_NAME = os.getenv("CDSW_PROJECT")
 # Instantiate API Wrapper
 cml = CMLBootstrap(HOST, USERNAME, API_KEY, PROJECT_NAME)
 
-# Set the STORAGE environment variable
-try : 
-  storage=os.environ["STORAGE"]
-  print('MADE IT TO - A')
-except:
-  if os.path.exists("/etc/hadoop/conf/hive-site.xml"):
-    print('MADE IT TO - B')
-    tree = ET.parse('/etc/hadoop/conf/hive-site.xml')
-    root = tree.getroot()
-    for prop in root.findall('property'):
-      if prop.find('name').text == "hive.metastore.warehouse.dir":
-        storage = prop.find('value').text.split("/")[0] + "//" + prop.find('value').text.split("/")[2]
-  else:
-    print('MADE IT TO - C')
-    storage = "/user/" + os.getenv("HADOOP_USER_NAME")
+# Set dummy environment variable via CMLBootstrapAPI
+storage_environment_params = {"TEST_VAR_1":'this_is_test_var_1'}
+storage_environment = cml.create_environment_variable(storage_environment_params)
 
-#   storage_environment_params = {"STORAGE":storage}
-#   print("DATA_LOCATION A:", os.environ['DATA_LOCATION'])
-#   storage_environment = cml.create_environment_variable(storage_environment_params)
-#   os.environ["STORAGE"] = storage
+if "TEST_VAR_1" in os.environ:
+    print(os.environ["TEST_VAR_1"])
 
+# Set second environment variable via CMLBootstrapAPI
+storage_environment_params = {"TEST_VAR_2":'this_is_test_var_2'}
+storage_environment = cml.create_environment_variable(storage_environment_params)
 
-print("DATA_LOCATION B:", os.environ['DATA_LOCATION'])
-# print("STORAGE", os.environ["STORAGE"])
+if "TEST_VAR_1" in os.environ:
+    print(os.environ["TEST_VAR_1"])
+
+if "TEST_VAR_2" in os.environ:
+    print(os.environ["TEST_VAR_2"])
