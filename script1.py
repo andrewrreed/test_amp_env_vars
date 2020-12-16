@@ -29,7 +29,7 @@ except:
       if prop.find('name').text == "hive.metastore.warehouse.dir":
         storage = prop.find('value').text.split("/")[0] + "//" + prop.find('value').text.split("/")[2]
   else:
-      print('MADE IT TO - C')
+    print('MADE IT TO - C')
     storage = "/user/" + os.getenv("HADOOP_USER_NAME")
 
 #   storage_environment_params = {"STORAGE":storage}
