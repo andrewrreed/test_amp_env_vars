@@ -10,5 +10,32 @@ environment_variables:
   DATA_LOCATION:
     default: "data/churn_prototype"
     description: >-
-      Relative path that will be used to store the data used for this prototype.
-      This should be a location you have write access to, and which is suitable for non-production data.
+      Testing script
+
+  - type: create_job
+    name: Script1
+    entity_label: script1
+    script: script1.py
+    arguments: None
+    short_summary: job for script1
+    kernel: python3
+
+  - type: run_job
+    entity_label: script1
+    short_summary: run script1
+    long_summary: >-
+      Running script1
+
+  - type: create_job
+    name: Script2
+    entity_label: script2
+    script: script1.py
+    arguments: None
+    short_summary: job for script2
+    kernel: python3
+
+  - type: run_job
+    entity_label: script2
+    short_summary: run script2
+    long_summary: >-
+      Running script2
