@@ -2,6 +2,9 @@
 !pip3 install -r requirements.txt
 
 import os
+import datetime
+import xml.etree.ElementTree as ET
+from cmlbootstrap import CMLBootstrap
 
 run_time_suffix = datetime.datetime.now()
 run_time_suffix = run_time_suffix.strftime("%d%m%Y%H%M%S")
