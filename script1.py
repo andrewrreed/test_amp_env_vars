@@ -18,15 +18,20 @@ cml = CMLBootstrap(HOST, USERNAME, API_KEY, PROJECT_NAME)
 storage_environment_params = {"TEST_VAR_1":'this_is_test_var_1'}
 storage_environment = cml.create_environment_variable(storage_environment_params)
 
-if "TEST_VAR_1" in os.environ:
-    print(os.environ["TEST_VAR_1"])
+# if "TEST_VAR_1" in os.environ:
+#     print(os.environ["TEST_VAR_1"])
+
+assert "TEST_VAR_1" in os.environ
 
 # Set second environment variable via CMLBootstrapAPI
 storage_environment_params = {"TEST_VAR_2":'this_is_test_var_2'}
 storage_environment = cml.create_environment_variable(storage_environment_params)
 
-if "TEST_VAR_1" in os.environ:
-    print(os.environ["TEST_VAR_1"])
+assert "TEST_VAR_1" in os.environ
+assert "TEST_VAR_2" in os.environ
 
-if "TEST_VAR_2" in os.environ:
-    print(os.environ["TEST_VAR_2"])
+# if "TEST_VAR_1" in os.environ:
+#     print(os.environ["TEST_VAR_1"])
+
+# if "TEST_VAR_2" in os.environ:
+#     print(os.environ["TEST_VAR_2"])
