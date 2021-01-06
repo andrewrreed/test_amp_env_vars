@@ -1,4 +1,6 @@
 import os
 
-print("DATA_LOCATION:", os.environ['DATA_LOCATION'])
-# print("STORAGE", os.environ["STORAGE"])
+try:
+    print(os.environ['DATA_LOCATION'])
+except:
+    print('DATA_LOCATION env variable is NOT present')

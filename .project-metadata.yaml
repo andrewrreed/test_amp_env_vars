@@ -27,16 +27,16 @@ tasks:
     long_summary: >-
       Running script1
 
-  # - type: create_job
-  #   name: Script2
-  #   entity_label: script2
-  #   script: script2.py
-  #   arguments: None
-  #   short_summary: job for script2
-  #   kernel: python3
+  - type: create_job
+    name: Script2
+    entity_label: script2
+    script: script2.py
+    arguments: None
+    short_summary: job for script2
+    kernel: python3
 
-  # - type: run_job
-  #   entity_label: script2
-  #   short_summary: run script2
-  #   long_summary: >-
-  #     Running script2
+  - type: run_job
+    entity_label: script2
+    short_summary: run script2
+    long_summary: >-
+      Running script2
