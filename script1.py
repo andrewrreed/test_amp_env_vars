@@ -21,9 +21,10 @@ try:
 except:
     print('DATA_LOCATION env variable is NOT present')
 
-# Set dummy environment variable via CMLBootstrapAPI
-storage_environment_params = {"TEST_VAR_1":'this_is_test_var_1'}
-storage_environment = cml.create_environment_variable(storage_environment_params)
+# ## COMMENT THIS OUT FOR TESTING TO SEE THAT IT WORKS
+# # Set dummy environment variable via CMLBootstrapAPI
+# storage_environment_params = {"TEST_VAR_1":'this_is_test_var_1'}
+# storage_environment = cml.create_environment_variable(storage_environment_params)
 
 # Check for the DATA_LOCATION env variable that was set via .project-metadata.yaml
 print('----AFTER USING BOOTSTRAP----')
